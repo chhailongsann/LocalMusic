@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EDC717F72B071C3E0036AABF /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC717F62B071C3E0036AABF /* MusicLibraryView.swift */; };
 		EDC717F92B074CCF0036AABF /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC717F82B074CCF0036AABF /* SongListView.swift */; };
+		EDF1623B2C077CBC00334FDC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1623A2C077CBC00334FDC /* MainTabView.swift */; };
+		EDF1623D2C077D5800334FDC /* ListenNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1623C2C077D5800334FDC /* ListenNowView.swift */; };
 		F818511627EE12B200947ABB /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818511527EE12B200947ABB /* TabbarView.swift */; };
 		F818511827EE148300947ABB /* MainControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818511727EE148300947ABB /* MainControlsView.swift */; };
 		F818511A27EE21D200947ABB /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818511927EE21D200947ABB /* UIImage+Extension.swift */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		EDC717F62B071C3E0036AABF /* MusicLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryView.swift; sourceTree = "<group>"; };
 		EDC717F82B074CCF0036AABF /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
+		EDF1623A2C077CBC00334FDC /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		EDF1623C2C077D5800334FDC /* ListenNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenNowView.swift; sourceTree = "<group>"; };
 		F818511527EE12B200947ABB /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		F818511727EE148300947ABB /* MainControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControlsView.swift; sourceTree = "<group>"; };
 		F818511927EE21D200947ABB /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			children = (
 				EDC717F62B071C3E0036AABF /* MusicLibraryView.swift */,
 				EDC717F82B074CCF0036AABF /* SongListView.swift */,
+				EDF1623A2C077CBC00334FDC /* MainTabView.swift */,
+				EDF1623C2C077D5800334FDC /* ListenNowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -423,12 +429,14 @@
 				F818511827EE148300947ABB /* MainControlsView.swift in Sources */,
 				F8BCC86A27DD006400FDAF5F /* String+Extension.swift in Sources */,
 				F8BCC88827DD00F600FDAF5F /* UIStackView.swift in Sources */,
+				EDF1623D2C077D5800334FDC /* ListenNowView.swift in Sources */,
 				F8BCC89627DD010D00FDAF5F /* ListController.swift in Sources */,
 				F8BCC89927DD01F000FDAF5F /* LibraryCell.swift in Sources */,
 				F8BCC88927DD00F600FDAF5F /* UILabel.swift in Sources */,
 				F8BCC87427DD00D900FDAF5F /* ListCell.swift in Sources */,
 				F8C3BC5027E389F3007B4E49 /* TrackListingVC.swift in Sources */,
 				F8BCC88F27DD00F600FDAF5F /* CircularImageView.swift in Sources */,
+				EDF1623B2C077CBC00334FDC /* MainTabView.swift in Sources */,
 				F8BCC87D27DD00E900FDAF5F /* UITextField+Tools.swift in Sources */,
 				F8BCC89B27DD04CE00FDAF5F /* CollectionController.swift in Sources */,
 				F8C3BC5227E38B0E007B4E49 /* Song.swift in Sources */,
@@ -511,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -568,7 +576,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -588,14 +596,16 @@
 				DEVELOPMENT_TEAM = 49FZ2LJ7AC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Music/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = blah;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = yes;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +618,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -622,14 +632,16 @@
 				DEVELOPMENT_TEAM = 49FZ2LJ7AC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Music/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = blah;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = yes;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -642,7 +654,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                          policy: .default,
                                          options: [])
             try audioSession.setActive(true)
-            print("Session is Active")
             
         } catch {
             print(error.localizedDescription)
@@ -77,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc func musicPlay(notification: NSNotification) {
         if let song = notification.object as? Song {
                 do {
-                    
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: URL(string: song.assetUrl)!)
+                    guard let url = song.assetUrl else { return }
+                    self.audioPlayer = try AVAudioPlayer(contentsOf: url)
                     self.audioPlayer?.prepareToPlay()
                     self.audioPlayer?.play()
                     var nowPlayingInfo = [String : Any]()

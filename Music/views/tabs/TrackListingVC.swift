@@ -14,14 +14,23 @@ class TrackListingVC: CollectionController<TrackCell,Song> {
         super.viewDidLoad()
         title = "Songs"
         self.showLoading()
-        AssetsLoader.shared.loadAllTracks { tracks, error in
-            if let tracks = tracks {
-                self.items = tracks
-            }
-            if let error = error {
-                print(error.localizedDescription)
+        
+        loadTracks()
+    }
+    
+    func loadTracks() {
+        
+        Task {
+            await AssetsLoader.shared.loadAllTracks { tracks, error in
+                if let tracks = tracks {
+                    self.items = tracks
+                }
+                if let error = error {
+                    print(error.localizedDescription)
+                }
             }
         }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

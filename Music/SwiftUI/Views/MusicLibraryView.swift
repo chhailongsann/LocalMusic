@@ -9,17 +9,6 @@ import SwiftUI
 
 struct MusicLibraryView: View {
     
-    init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .clear
-        
-        UINavigationBar.appearance().tintColor = .accent
-        
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
-    }
     var loading = true
     @State var items: [LibraryItem] = [
         .init(icon: "music.note.list",              title: "Playlists"),
@@ -41,50 +30,47 @@ struct MusicLibraryView: View {
     ]
     
     var body: some View {
-        List {
-            ForEach(items) { item in
-                
-                NavigationLink(destination: LibraryDetailView(item: item)) {
-                    Label(item.title, systemImage: item.icon)
-                }.tint(.accentColor)
-            }
-            ForEach(songs) { song in
-                AlbumView(song: song)
-                    .overlay {
-                    Button {
-                        NotificationCenter.default.post(name: .playTrack, object: song)
-                    } label: {
-                        EmptyView()
-                    }
-                    .opacity(0)
+            List {
+                ForEach(items) { item in
+                    
+                    NavigationLink(destination: LibraryDetailView(item: item)) {
+                        Label(item.title, systemImage: item.icon)
+                    }.tint(.accentColor)
                 }
-            }
-//            Section {
-//                LazyVGrid(columns: gridItem) {
-//
+                LazyVGrid(columns: gridItem, spacing: 20) {
+                                ForEach(songs) { song in
+                                    AlbumView(song: song)
+                                }
+                            }
+                            .padding(.horizontal)
+//                ForEach(songs) { song in
+//                    AlbumView(song: song)
+//                        .overlay {
+//                            Button {
+//                                NotificationCenter.default.post(name: .playTrack, object: song)
+//                            } label: {
+//                                EmptyView()
+//                            }
+//                            .opacity(0)
+//                        }
 //                }
-//            } header: {
-//                Text("Recently Added")
-//                    .font(.headline)
-//            }
-        }
-        .listStyle(.plain)
-        .tint(.accentColor)
-        .padding(.bottom, 80)
-        .onAppear {
-            if self.songs.isEmpty {
-                Task {
-                    AssetsLoader.shared.loadAllTracks { tracks, error in
-                        if let tracks = tracks {
-                            self.songs = tracks
-                            
-                        }
-                        if let error = error {
-                            print(error.localizedDescription)
+            }
+            .navigationTitle("Library")
+            .listStyle(.plain)
+            .onAppear {
+                if self.songs.isEmpty {
+                    Task {
+                        await AssetsLoader.shared.loadAllTracks { tracks, error in
+                            if let tracks = tracks {
+                                self.songs = tracks
+                                
+                            }
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
                         }
                     }
                 }
-            }
         }
     }
     
@@ -134,9 +120,9 @@ struct AlbumView: View {
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
-            Text(song.title)
+            Text(song.title ?? "Unknown")
                 .font(.body)
-            Text(song.artist)
+            Text(song.artist ?? "Unknown")
                 .foregroundStyle(.gray)
                 .font(.body)
         }

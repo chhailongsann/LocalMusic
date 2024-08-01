@@ -11,13 +11,13 @@ import UIKit
 struct Song: Identifiable, Decodable, Encodable {
     
     let id = UUID().uuidString
-    let assetUrl: String
-    let title: String
-    let album: String
+    let assetUrl: URL?
+    let title: String?
+    let album: String?
     let artwork: Artwork?
-    let artist: String
-    let genre: String
-    let year: String
+    let artist: String?
+    let genre: String?
+    let year: String?
     private enum CodingKeys: String, CodingKey {
         case title, album, artwork, year, genre, artist
         case assetUrl = "asset_url"

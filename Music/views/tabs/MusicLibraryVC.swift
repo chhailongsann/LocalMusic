@@ -58,16 +58,6 @@ class MusicLibraryVC: UICollectionViewController {
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .systemBackground
         
-        
-        self.navigationController?.navigationBar.tintColor = .accentColor
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        //            let appearance = UINavigationBarAppearance()
-        //            appearance.configureWithOpaqueBackground()
-        //            appearance.backgroundColor = .red
-        //            self.navigationController?.navigationBar.standardAppearance = appearance
-        //            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-        
         getMusicLibrary()
         
         
@@ -100,15 +90,17 @@ class MusicLibraryVC: UICollectionViewController {
     
     func getMusicLibrary() {
         Task {
-            AssetsLoader.shared.loadAllTracks({ (tracks,error) in
+            await AssetsLoader.shared.loadAllTracks { tracks, error in
                 if let tracks = tracks {
                     self.songs = tracks
-                    
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 }
                 if let error = error {
                     print(error.localizedDescription)
                 }
-            })
+            }
         }
     }
 }

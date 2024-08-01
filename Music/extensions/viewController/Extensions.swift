@@ -235,30 +235,6 @@ extension UIImage {
 }
 
 
-extension UIViewController {
-      
-      func setUpNavigation(tintColor: UIColor = .white, titleColor: UIColor = .white, prefersLargeTitles: Bool = true) {
-            if let nav = navigationController {
-                  nav.navigationBar.tintColor = tintColor
-                  nav.navigationBar.prefersLargeTitles = prefersLargeTitles
-                  nav.navigationBar.largeTitleTextAttributes = [
-                        .foregroundColor: titleColor,
-                        .font: UIFont.systemFont(ofSize: 22, weight: .medium)
-                  ]
-                  let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
-                  backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
-                  let navigationBarAppearance = UINavigationBarAppearance()
-                  navigationBarAppearance.backButtonAppearance = backButtonAppearance
-                  navigationBarAppearance.setBackIndicatorImage(#imageLiteral(resourceName: "ic_back"), transitionMaskImage: #imageLiteral(resourceName: "ic_back"))
-                  navigationBarAppearance.largeTitleTextAttributes = [
-                        .foregroundColor: titleColor,
-                        .font: UIFont.systemFont(ofSize: 22, weight: .medium)
-                  ]
-                  nav.navigationBar.standardAppearance = navigationBarAppearance
-                  
-            }
-      }
-}
 extension TimeInterval {
       func stringFromTimeInterval() -> String {
             

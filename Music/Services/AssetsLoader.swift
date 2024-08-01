@@ -38,7 +38,7 @@ class AssetsLoader {
     }
     
     
-    func loadAllTracks(_ handler: @escaping ([Song]?,Error?) -> (Void)) {
+    func loadAllTracks(_ handler: @escaping ([Song]?,Error?) -> (Void)) async {
         
         var songs = [Song]()
         
@@ -54,64 +54,117 @@ class AssetsLoader {
                 includingPropertiesForKeys: nil
             )
             
-            
             for url in directoryContents {
-                if url.isMP3 {
+                
+                if url.isMP3 || url.isFlac {
                     let asset = AVAsset(url: url)
-                    if let format = asset.availableMetadataFormats.first {
-                        var artist = ""
-                        var album = ""
-                        var title = ""
-                        var genre = ""
-                        var year = ""
-                        var imageData = Data()
-                        for metadata in asset.metadata(forFormat: format) {
-                            
-                            if metadata.commonKey == .commonKeyArtist {
-                                artist = metadata.stringValue ?? "Unknown Artist"
-                            }
-                            if metadata.commonKey == .commonKeyAlbumName {
-                                album = metadata.stringValue ?? "Unknown Album"
-                            }
-                            
-                            if metadata.commonKey == .commonKeyTitle {
-                                title = metadata.stringValue ?? "Unknown Title"
-                            }
-                            
-                            if metadata.commonKey == .quickTimeMetadataKeyGenre {
-                                genre = metadata.stringValue ?? ""
-                            }
-                            
-                            if metadata.commonKey == .id3MetadataKeyOriginalReleaseYear {
-                                year = metadata.stringValue ?? ""
-                            }
-                            
-                            if let data = metadata.dataValue {
-                                imageData = data
+
+                    do {
+                        // Load the metadata asynchronously
+                        let metadata = try await asset.load(.commonMetadata)
+                        
+                        var artist: String?
+                        var album: String?
+                        var title: String?
+                        var genre: String?
+                        var year: String?
+                        var artwork: Artwork?
+                        
+                        for item in metadata {
+                            if let key = item.commonKey?.rawValue {
+                                print("key: \(key)")
+
+                                switch key {
+                                case "title":
+                                    title = try await item.load(.value) as? String
+                                case "artist":
+                                    artist = try await item.load(.value) as? String
+                                case "albumName":
+                                    album = try await item.load(.value) as? String
+                                case "type":
+                                    genre = try await item.load(.value) as? String
+                                case "artwork":
+                                    let imageData = try await item.load(.value) as? Data
+                                    artwork = Artwork(imageData: imageData)
+                                default:
+                                    break
+                                }
+                                
+                                
+                            } else {
+                                print("unknown: \(item.description)")
                             }
                         }
                         let song = Song(
-                            assetUrl: url.absoluteString,
+                            assetUrl: url,
                             title: title,
                             album: album,
-                            artwork: Artwork(imageData: imageData),
+                            artwork: artwork,
                             artist: artist,
                             genre: genre,
                             year: year)
-                        
                         songs.append(song)
-                    } else {
-                        let song = Song(
-                            assetUrl: url.absoluteString,
-                            title: "unknown",
-                            album: "unknown",
-                            artwork: nil,
-                            artist: "unknown",
-                            genre: "unknown",
-                            year: "unknown")
-                        
-                        songs.append(song)
+                    } catch {
+                        // Handle the error appropriately
+                        print("Error loading metadata: \(error.localizedDescription)")
                     }
+                    
+//                    if let format = asset.availableMetadataFormats.first {
+//                        var artist = ""
+//                        var album = ""
+//                        var title = ""
+//                        var genre = ""
+//                        var year = ""
+//                        var imageData = Data()
+//                        for metadata in asset.metadata(forFormat: format) {
+//                            
+//                            if metadata.commonKey == .commonKeyArtist {
+//                                artist = metadata.stringValue ?? "Unknown Artist"
+//                            }
+//                            if metadata.commonKey == .commonKeyAlbumName {
+//                                album = metadata.stringValue ?? "Unknown Album"
+//                            }
+//                            
+//                            if metadata.commonKey == .commonKeyTitle {
+//                                title = metadata.stringValue ?? "Unknown Title"
+//                            }
+//                            
+//                            if metadata.commonKey == .quickTimeMetadataKeyGenre {
+//                                genre = metadata.stringValue ?? ""
+//                            }
+//                            
+//                            if metadata.commonKey == .id3MetadataKeyOriginalReleaseYear {
+//                                year = metadata.stringValue ?? ""
+//                            }
+//                            
+//                            if let data = metadata.dataValue {
+//                                imageData = data
+//                            }
+//                        }
+//                        let song = Song(
+//                            assetUrl: url.absoluteString,
+//                            title: title,
+//                            album: album,
+//                            artwork: Artwork(imageData: imageData),
+//                            artist: artist,
+//                            genre: genre,
+//                            year: year)
+//                        
+//                        songs.append(song)
+//                    } else {
+//                        let song = Song(
+//                            assetUrl: url.absoluteString,
+//                            title: "unknown",
+//                            album: "unknown",
+//                            artwork: nil,
+//                            artist: "unknown",
+//                            genre: "unknown",
+//                            year: "unknown")
+//                        
+//                        songs.append(song)
+//                    }
+                } else {
+                    print("Unknown File: \(url.pathExtension)")
                 }
             }
             handler(songs,nil)
@@ -125,7 +178,10 @@ class AssetsLoader {
 
 extension URL {
     var typeIdentifier: String? { (try? resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier }
-    var isMP3: Bool { typeIdentifier == "public.mp3" }
+    var isMP3: Bool { typeIdentifier == "public.mp3"
+    }
+    
+    var isFlac: Bool { typeIdentifier?.hasSuffix(".flac") ?? false }
     var localizedName: String? { (try? resourceValues(forKeys: [.localizedNameKey]))?.localizedName }
     var hasHiddenExtension: Bool {
         get { (try? resourceValues(forKeys: [.hasHiddenExtensionKey]))?.hasHiddenExtension == true }

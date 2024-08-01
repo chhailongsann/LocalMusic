@@ -29,7 +29,7 @@ struct SongListView: View {
         .onAppear {
             if self.songs.isEmpty {
                 Task {
-                    AssetsLoader.shared.loadAllTracks{ tracks, error in
+                    await AssetsLoader.shared.loadAllTracks{ tracks, error in
                         if let tracks = tracks {
                             self.songs = tracks
                             
@@ -62,10 +62,10 @@ struct SongListItemView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 4))
             }
             VStack(alignment: .leading, spacing: 0) {
-                Text(song.title)
+                Text(song.title ?? "Unknown")
                     .font(.callout)
                     .lineLimit(1)
-                Text(song.artist)
+                Text(song.artist ?? "Unknown")
                     .foregroundStyle(.gray)
                     .font(.footnote)
                     .lineLimit(1)
