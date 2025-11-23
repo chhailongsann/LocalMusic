@@ -7,9 +7,9 @@
 
 import UIKit
 class RadioVC: UIViewController {
-      override func viewDidLoad() {
-            super.viewDidLoad()
-            view.backgroundColor = .systemBackground
-            title = "Radio"
-      }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .systemBackground
+    title = "Radio"
+  }
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 class ListenNowVC: UIViewController {
-      override func viewDidLoad() {
-            super.viewDidLoad()
-            view.backgroundColor = .systemBackground
-            title = "Listen Now"
-      }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .systemBackground
+    title = "Listen Now"
+  }
 }

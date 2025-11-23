@@ -1,0 +1,15 @@
+{
+  "originHash" : "d48f9cd57b4b26b5341078f71f90642702d7fb7543139172220ea6803bed7e5e",
+  "pins" : [
+    {
+      "identity" : "bxanchor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chhailongsann/BXAnchor",
+      "state" : {
+        "revision" : "9ff1762081658b8de79156491491b84bc648ed14",
+        "version" : "1.0.11"
+      }
+    }
+  ],
+  "version" : 3
+}

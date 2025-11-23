@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8550A9E92ED35072002886CC /* BXAnchor in Frameworks */ = {isa = PBXBuildFile; productRef = 8550A9E82ED35072002886CC /* BXAnchor */; };
 		EDC717F72B071C3E0036AABF /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC717F62B071C3E0036AABF /* MusicLibraryView.swift */; };
 		EDC717F92B074CCF0036AABF /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC717F82B074CCF0036AABF /* SongListView.swift */; };
 		EDF1623B2C077CBC00334FDC /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF1623A2C077CBC00334FDC /* MainTabView.swift */; };
@@ -42,10 +43,7 @@
 		F8BCC88A27DD00F600FDAF5F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88127DD00F600FDAF5F /* UIButton.swift */; };
 		F8BCC88B27DD00F600FDAF5F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88227DD00F600FDAF5F /* ProgressView.swift */; };
 		F8BCC88C27DD00F600FDAF5F /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88327DD00F600FDAF5F /* AspectFitImageView.swift */; };
-		F8BCC88D27DD00F600FDAF5F /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88427DD00F600FDAF5F /* UIView+Layout.swift */; };
-		F8BCC88E27DD00F600FDAF5F /* UIView+Stacking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88527DD00F600FDAF5F /* UIView+Stacking.swift */; };
 		F8BCC88F27DD00F600FDAF5F /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88627DD00F600FDAF5F /* CircularImageView.swift */; };
-		F8BCC89027DD00F600FDAF5F /* AnchoredConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC88727DD00F600FDAF5F /* AnchoredConstraints.swift */; };
 		F8BCC89427DD010D00FDAF5F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC89127DD010D00FDAF5F /* Extensions.swift */; };
 		F8BCC89527DD010D00FDAF5F /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC89227DD010D00FDAF5F /* UIDevice.swift */; };
 		F8BCC89627DD010D00FDAF5F /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BCC89327DD010D00FDAF5F /* ListController.swift */; };
@@ -99,10 +97,7 @@
 		F8BCC88127DD00F600FDAF5F /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		F8BCC88227DD00F600FDAF5F /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F8BCC88327DD00F600FDAF5F /* AspectFitImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
-		F8BCC88427DD00F600FDAF5F /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
-		F8BCC88527DD00F600FDAF5F /* UIView+Stacking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Stacking.swift"; sourceTree = "<group>"; };
 		F8BCC88627DD00F600FDAF5F /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
-		F8BCC88727DD00F600FDAF5F /* AnchoredConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnchoredConstraints.swift; sourceTree = "<group>"; };
 		F8BCC89127DD010D00FDAF5F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F8BCC89227DD010D00FDAF5F /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		F8BCC89327DD010D00FDAF5F /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
@@ -123,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8550A9E92ED35072002886CC /* BXAnchor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,15 +269,12 @@
 		F8BCC87127DD00AF00FDAF5F /* view */ = {
 			isa = PBXGroup;
 			children = (
-				F8BCC88727DD00F600FDAF5F /* AnchoredConstraints.swift */,
 				F8BCC88327DD00F600FDAF5F /* AspectFitImageView.swift */,
 				F8BCC88627DD00F600FDAF5F /* CircularImageView.swift */,
 				F8BCC88227DD00F600FDAF5F /* ProgressView.swift */,
 				F8BCC88127DD00F600FDAF5F /* UIButton.swift */,
 				F8BCC88027DD00F600FDAF5F /* UILabel.swift */,
 				F8BCC87F27DD00F600FDAF5F /* UIStackView.swift */,
-				F8BCC88427DD00F600FDAF5F /* UIView+Layout.swift */,
-				F8BCC88527DD00F600FDAF5F /* UIView+Stacking.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -342,6 +335,7 @@
 			);
 			name = Music;
 			packageProductDependencies = (
+				8550A9E82ED35072002886CC /* BXAnchor */,
 			);
 			productName = Music;
 			productReference = F87B893727C536EC00913D77 /* Music.app */;
@@ -372,6 +366,7 @@
 			);
 			mainGroup = F87B892E27C536EC00913D77;
 			packageReferences = (
+				8550A9E72ED35072002886CC /* XCRemoteSwiftPackageReference "BXAnchor" */,
 			);
 			productRefGroup = F87B893827C536EC00913D77 /* Products */;
 			projectDirPath = "";
@@ -403,7 +398,6 @@
 				F8C3BC5927E39216007B4E49 /* TrackCell.swift in Sources */,
 				F8BCC89427DD010D00FDAF5F /* Extensions.swift in Sources */,
 				F8252A0B27EB8296008DBA37 /* SearchTrackVC.swift in Sources */,
-				F8BCC88E27DD00F600FDAF5F /* UIView+Stacking.swift in Sources */,
 				F8C3BC5727E38CD6007B4E49 /* AssetsLoader.swift in Sources */,
 				F8BCC87B27DD00E900FDAF5F /* String+subscript.swift in Sources */,
 				F8BCC87627DD00E000FDAF5F /* FormViewController.swift in Sources */,
@@ -442,12 +436,10 @@
 				F8C3BC5227E38B0E007B4E49 /* Song.swift in Sources */,
 				F82D325627E89EC9002F4BD8 /* LoadingFooterView.swift in Sources */,
 				EDC717F92B074CCF0036AABF /* SongListView.swift in Sources */,
-				F8BCC89027DD00F600FDAF5F /* AnchoredConstraints.swift in Sources */,
 				EDC717F72B071C3E0036AABF /* MusicLibraryView.swift in Sources */,
 				F8252A0927EB825A008DBA37 /* BrowseVC.swift in Sources */,
 				F8BCC8A227DDA7C100FDAF5F /* Album.swift in Sources */,
 				F8BCC86C27DD006400FDAF5F /* URL+Extension.swift in Sources */,
-				F8BCC88D27DD00F600FDAF5F /* UIView+Layout.swift in Sources */,
 				F87B893D27C536EC00913D77 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,6 +672,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8550A9E72ED35072002886CC /* XCRemoteSwiftPackageReference "BXAnchor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chhailongsann/BXAnchor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8550A9E82ED35072002886CC /* BXAnchor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8550A9E72ED35072002886CC /* XCRemoteSwiftPackageReference "BXAnchor" */;
+			productName = BXAnchor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F87B892F27C536EC00913D77 /* Project object */;
 }

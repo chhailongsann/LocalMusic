@@ -64,3 +64,12 @@ extension Color {
     }
 
 }
+
+extension UIView {
+  convenience init(backgroundColor: UIColor) {
+    self.init()
+    self.invalidateIntrinsicContentSize()
+    self.backgroundColor = backgroundColor
+    self.accessibilityIdentifier = "view-with-color-\(backgroundColor.hashValue)"
+  }
+}

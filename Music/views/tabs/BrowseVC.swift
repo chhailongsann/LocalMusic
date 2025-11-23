@@ -7,10 +7,10 @@
 
 import UIKit
 class BrowseVC: UIViewController {
-      
-      override func viewDidLoad() {
-            super.viewDidLoad()
-            view.backgroundColor = .systemBackground
-            title = "Browse"
-      }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .systemBackground
+    title = "Browse"
+  }
 }

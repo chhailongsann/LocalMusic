@@ -43,8 +43,10 @@ open class CollectionController<T: CollectionCell<U>,U>: UICollectionViewControl
             self.navigationController?.navigationBar.tintColor = .accentColor
             self.navigationController?.navigationBar.prefersLargeTitles = true
             
-            self.view.addSubview(loadingIndicator)
-            loadingIndicator.centerInSuperview()
+        loadingIndicator.layout(in: view) {
+          $0.center()
+        }
+           
       }
       
       open override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
